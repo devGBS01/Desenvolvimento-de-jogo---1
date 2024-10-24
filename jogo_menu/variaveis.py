@@ -6,7 +6,7 @@ from cena import *
 
 #image
 image_path8 = os.path.join(img_dir2, 'ai-generated-8469399_1280.jpg')
-image_path10 = os.path.join(img_dir, 'WhatsApp_Image_2024-10-10_at_22.26.36-removebg-preview.png')
+image_path10 = os.path.join(img_dir2, 'fogo1.png')
 image = pygame.image.load(image_path8)
 fogo = pygame.image.load(image_path10)
 lar = 1280
