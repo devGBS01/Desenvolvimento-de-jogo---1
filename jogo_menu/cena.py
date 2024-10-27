@@ -5,9 +5,8 @@ from fases import *
 from fogo import *
 from objetos import *
 from variaveis import *
-base_dir= os.path.dirname(__file__)
-img_dir = os.path.join(base_dir, 'imagens')
-img_dir2 = os.path.join(base_dir, 'png')
+from player import *
+
 
 image_path1 = os.path.join(img_dir2, 'bloco.png')
 image_path2 = os.path.join(img_dir2, 'fogo3.png')
@@ -37,7 +36,9 @@ class Cena:
         self.display = pygame.display.get_surface()
         self.colisão = pygame.sprite.Group()
         self.block = Camera()
+        self.collision_sprites = pygame.sprite.Group()
         self.mapa()
+
         
 
     def mapa(self):
@@ -73,10 +74,13 @@ class Cena:
                         [x, y], camadas["terceiro"], [370, 370], self.block)
 
                 if col == "tr":
-                    Obj(image_path7,
-                        [x, y], camadas["terceiro"], [130, 130], self.block)
+                    Obj(image_path7,[x, y], camadas["terceiro"], [130, 130], self.block)
+
+                if col == "z":
+                    self.player = Player(image_path9, [x, y], camadas['terceiro'], self.collision_sprites, [100, 100], self.block)
 
     def run(self):
+        self.block.seguindop(self.player)
         self.block.seguindo()
         self.block.update()
 
